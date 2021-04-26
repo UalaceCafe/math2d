@@ -78,6 +78,15 @@ module Math2D
       Vector2D.new(1, 0)
     end
 
+    # Negates both x and y values of `self` and returns a new Vector2D.
+    #
+    # @return [Vector2D]
+    def -@
+      Vector2D.new(-@x, -@y)
+    end
+
+    alias negate -@
+
     # Adds `self` to another vector or to a scalar.
     #
     # @param [Numeric, Vector2D] other

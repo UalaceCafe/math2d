@@ -511,6 +511,32 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#-@-instance_method" title="#-@ (instance method)">#<strong>-@</strong>  &#x21d2; Vector2D </a>
+    
+
+    
+      (also: #negate)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Negates both x and y values of `self` and returns a new Vector2D.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#%2F-instance_method" title="#/ (instance method)">#<strong>/</strong>(other)  &#x21d2; Vector2D </a>
     
 
@@ -1352,12 +1378,12 @@
       <pre class="lines">
 
 
-235
-236
-237</pre>
+244
+245
+246</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 235</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 244</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_from_angle'>from_angle</span><span class='lparen'>(</span><span class='id identifier rubyid_theta'>theta</span><span class='comma'>,</span> <span class='id identifier rubyid_len'>len</span> <span class='op'>=</span> <span class='int'>1</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="" title="Math2D::Vector2D (class)">Vector2D</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#initialize-instance_method" title="Math2D::Vector2D#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_len'>len</span> <span class='op'>*</span> <span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_cos'>cos</span><span class='lparen'>(</span><span class='id identifier rubyid_theta'>theta</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_len'>len</span> <span class='op'>*</span> <span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_sin'>sin</span><span class='lparen'>(</span><span class='id identifier rubyid_theta'>theta</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -1514,13 +1540,13 @@
       <pre class="lines">
 
 
-281
-282
-283
-284</pre>
+290
+291
+292
+293</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 281</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 290</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_random'>random</span>
   <span class='id identifier rubyid_theta'>theta</span> <span class='op'>=</span> <span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='op'>-</span><span class='const'><span class='object_link'><a href="Utils2D.html" title="Math2D::Utils2D (module)">Utils2D</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Utils2D.html#TWO_PI-constant" title="Math2D::Utils2D::TWO_PI (constant)">TWO_PI</a></span></span><span class='op'>..</span><span class='const'>Utils2D</span><span class='op'>::</span><span class='const'>TWO_PI</span><span class='rparen'>)</span>
@@ -1652,14 +1678,14 @@
       <pre class="lines">
 
 
-305
-306
-307
-308
-309</pre>
+314
+315
+316
+317
+318</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 305</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 314</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_to_vector'>to_vector</span><span class='lparen'>(</span><span class='id identifier rubyid_arr'>arr</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>`arr` must be an Array</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_arr'>arr</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>!=</span> <span class='const'>Array</span>
@@ -1839,14 +1865,14 @@
       <pre class="lines">
 
 
-105
-106
-107
-108
-109</pre>
+114
+115
+116
+117
+118</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 105</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 114</span>
 
 <span class='kw'>def</span> <span class='op'>*</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='const'><span class='object_link'><a href="" title="Math2D::Vector2D (class)">Vector2D</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#initialize-instance_method" title="Math2D::Vector2D#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='ivar'>@x</span> <span class='op'>*</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='ivar'>@y</span> <span class='op'>*</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_y'>y</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_instance_of?'>instance_of?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="" title="Math2D::Vector2D (class)">Vector2D</a></span></span><span class='rparen'>)</span>
@@ -1912,14 +1938,14 @@
       <pre class="lines">
 
 
-85
-86
-87
-88
-89</pre>
+94
+95
+96
+97
+98</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 85</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 94</span>
 
 <span class='kw'>def</span> <span class='op'>+</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='const'><span class='object_link'><a href="" title="Math2D::Vector2D (class)">Vector2D</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#initialize-instance_method" title="Math2D::Vector2D#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='ivar'>@x</span> <span class='op'>+</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='ivar'>@y</span> <span class='op'>+</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_y'>y</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_instance_of?'>instance_of?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="" title="Math2D::Vector2D (class)">Vector2D</a></span></span><span class='rparen'>)</span>
@@ -1985,19 +2011,77 @@
       <pre class="lines">
 
 
-95
-96
-97
-98
-99</pre>
+104
+105
+106
+107
+108</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 95</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 104</span>
 
 <span class='kw'>def</span> <span class='op'>-</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='const'><span class='object_link'><a href="" title="Math2D::Vector2D (class)">Vector2D</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#initialize-instance_method" title="Math2D::Vector2D#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='ivar'>@x</span> <span class='op'>-</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='ivar'>@y</span> <span class='op'>-</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_y'>y</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_instance_of?'>instance_of?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="" title="Math2D::Vector2D (class)">Vector2D</a></span></span><span class='rparen'>)</span>
 
   <span class='const'><span class='object_link'><a href="" title="Math2D::Vector2D (class)">Vector2D</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#initialize-instance_method" title="Math2D::Vector2D#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='ivar'>@x</span> <span class='op'>-</span> <span class='id identifier rubyid_other'>other</span><span class='comma'>,</span> <span class='ivar'>@y</span> <span class='op'>-</span> <span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="-@-instance_method">
+  
+    #<strong>-@</strong>  &#x21d2; <tt><span class='object_link'><a href="" title="Math2D::Vector2D (class)">Vector2D</a></span></tt> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='negate-instance_method'>negate</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Negates both x and y values of `self` and returns a new Vector2D.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Math2D::Vector2D (class)">Vector2D</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+84
+85
+86</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 84</span>
+
+<span class='kw'>def</span> <span class='op'>-@</span>
+  <span class='const'><span class='object_link'><a href="" title="Math2D::Vector2D (class)">Vector2D</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#initialize-instance_method" title="Math2D::Vector2D#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='op'>-</span><span class='ivar'>@x</span><span class='comma'>,</span> <span class='op'>-</span><span class='ivar'>@y</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2058,14 +2142,14 @@
       <pre class="lines">
 
 
-115
-116
-117
-118
-119</pre>
+124
+125
+126
+127
+128</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 115</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 124</span>
 
 <span class='kw'>def</span> <span class='op'>/</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='const'><span class='object_link'><a href="" title="Math2D::Vector2D (class)">Vector2D</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#initialize-instance_method" title="Math2D::Vector2D#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='ivar'>@x</span> <span class='op'>/</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='ivar'>@y</span> <span class='op'>/</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_y'>y</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_instance_of?'>instance_of?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="" title="Math2D::Vector2D (class)">Vector2D</a></span></span><span class='rparen'>)</span>
@@ -2131,12 +2215,12 @@
       <pre class="lines">
 
 
-243
-244
-245</pre>
+252
+253
+254</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 243</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 252</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_angle_between'>angle_between</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_acos'>acos</span><span class='lparen'>(</span><span class='lparen'>(</span><span class='ivar'>@x</span> <span class='op'>*</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_x'>x</span> <span class='op'>+</span> <span class='ivar'>@y</span> <span class='op'>*</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_y'>y</span><span class='rparen'>)</span> <span class='op'>/</span> <span class='lparen'>(</span><span class='id identifier rubyid_magnitude'>magnitude</span> <span class='op'>*</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_magnitude'>magnitude</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -2200,12 +2284,12 @@
       <pre class="lines">
 
 
-137
-138
-139</pre>
+146
+147
+148</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 137</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 146</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cross'>cross</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='lparen'>(</span><span class='ivar'>@x</span> <span class='op'>*</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_y'>y</span><span class='rparen'>)</span> <span class='op'>-</span> <span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_x'>x</span> <span class='op'>*</span> <span class='ivar'>@y</span><span class='rparen'>)</span>
@@ -2269,12 +2353,12 @@
       <pre class="lines">
 
 
-159
-160
-161</pre>
+168
+169
+170</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 159</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 168</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_distance'>distance</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_sqrt'>sqrt</span><span class='lparen'>(</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_x'>x</span> <span class='op'>-</span> <span class='ivar'>@x</span><span class='rparen'>)</span><span class='op'>**</span><span class='int'>2</span> <span class='op'>+</span> <span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_y'>y</span> <span class='op'>-</span> <span class='ivar'>@y</span><span class='rparen'>)</span><span class='op'>**</span><span class='int'>2</span><span class='rparen'>)</span>
@@ -2338,12 +2422,12 @@
       <pre class="lines">
 
 
-126
-127
-128</pre>
+135
+136
+137</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 126</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 135</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_dot'>dot</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='lparen'>(</span><span class='ivar'>@x</span> <span class='op'>*</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_x'>x</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='lparen'>(</span><span class='ivar'>@y</span> <span class='op'>*</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_y'>y</span><span class='rparen'>)</span>
@@ -2392,12 +2476,12 @@
       <pre class="lines">
 
 
-218
-219
-220</pre>
+227
+228
+229</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 218</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 227</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_heading'>heading</span>
   <span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_atan2'>atan2</span><span class='lparen'>(</span><span class='ivar'>@y</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span><span class='comma'>,</span> <span class='ivar'>@x</span><span class='rparen'>)</span>
@@ -2472,12 +2556,12 @@
       <pre class="lines">
 
 
-261
-262
-263</pre>
+270
+271
+272</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 261</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 270</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_lerp'>lerp</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='comma'>,</span> <span class='id identifier rubyid_amt'>amt</span><span class='rparen'>)</span>
   <span class='kw'>self</span> <span class='op'>+</span> <span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span> <span class='op'>-</span> <span class='kw'>self</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='id identifier rubyid_amt'>amt</span>
@@ -2541,18 +2625,18 @@
       <pre class="lines">
 
 
-174
-175
-176
-177
-178
-179
-180
-181
-182</pre>
+183
+184
+185
+186
+187
+188
+189
+190
+191</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 174</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 183</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_limit'>limit</span><span class='lparen'>(</span><span class='id identifier rubyid_max'>max</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_msq'>msq</span> <span class='op'>=</span> <span class='id identifier rubyid_squared'>squared</span>
@@ -2607,12 +2691,12 @@
       <pre class="lines">
 
 
-151
-152
-153</pre>
+160
+161
+162</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 151</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 160</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_magnitude'>magnitude</span>
   <span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_sqrt'>sqrt</span><span class='lparen'>(</span><span class='ivar'>@x</span><span class='op'>**</span><span class='int'>2</span> <span class='op'>+</span> <span class='ivar'>@y</span><span class='op'>**</span><span class='int'>2</span><span class='rparen'>)</span>
@@ -2665,12 +2749,12 @@
       <pre class="lines">
 
 
-198
-199
-200</pre>
+207
+208
+209</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 198</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 207</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_normalize'>normalize</span>
   <span class='id identifier rubyid_set_magnitude'>set_magnitude</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span>
@@ -2723,12 +2807,12 @@
       <pre class="lines">
 
 
-208
-209
-210</pre>
+217
+218
+219</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 208</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 217</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_normalized?'>normalized?</span>
   <span class='id identifier rubyid_magnitude'>magnitude</span> <span class='op'>==</span> <span class='int'>1</span>
@@ -2777,12 +2861,12 @@
       <pre class="lines">
 
 
-166
-167
-168</pre>
+175
+176
+177</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 166</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 175</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ratio'>ratio</span>
   <span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span> <span class='op'>/</span> <span class='id identifier rubyid_y'>y</span>
@@ -2846,16 +2930,16 @@
       <pre class="lines">
 
 
-270
-271
-272
-273
-274
-275
-276</pre>
+279
+280
+281
+282
+283
+284
+285</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 270</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 279</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reflect'>reflect</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_other'>other</span> <span class='op'>=</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_normalize'>normalize</span>
@@ -2923,13 +3007,13 @@
       <pre class="lines">
 
 
-251
-252
-253
-254</pre>
+260
+261
+262
+263</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 251</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 260</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_rotate'>rotate</span><span class='lparen'>(</span><span class='id identifier rubyid_angle'>angle</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="" title="Math2D::Vector2D (class)">Vector2D</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#initialize-instance_method" title="Math2D::Vector2D#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='ivar'>@x</span> <span class='op'>*</span> <span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_cos'>cos</span><span class='lparen'>(</span><span class='id identifier rubyid_angle'>angle</span><span class='rparen'>)</span> <span class='op'>-</span> <span class='ivar'>@y</span> <span class='op'>*</span> <span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_sin'>sin</span><span class='lparen'>(</span><span class='id identifier rubyid_angle'>angle</span><span class='rparen'>)</span><span class='comma'>,</span>
@@ -3087,14 +3171,14 @@
       <pre class="lines">
 
 
-188
-189
-190
-191
-192</pre>
+197
+198
+199
+200
+201</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 188</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 197</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_magnitude'>set_magnitude</span><span class='lparen'>(</span><span class='id identifier rubyid_new_mag'>new_mag</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_mag'>mag</span> <span class='op'>=</span> <span class='id identifier rubyid_magnitude'>magnitude</span>
@@ -3145,12 +3229,12 @@
       <pre class="lines">
 
 
-144
-145
-146</pre>
+153
+154
+155</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 144</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 153</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_squared'>squared</span>
   <span class='lparen'>(</span><span class='ivar'>@x</span><span class='op'>**</span><span class='int'>2</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='lparen'>(</span><span class='ivar'>@y</span><span class='op'>**</span><span class='int'>2</span><span class='rparen'>)</span>
@@ -3199,12 +3283,12 @@
       <pre class="lines">
 
 
-289
-290
-291</pre>
+298
+299
+300</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 289</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 298</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_a'>to_a</span>
   <span class='lbracket'>[</span><span class='ivar'>@x</span><span class='comma'>,</span> <span class='ivar'>@y</span><span class='rbracket'>]</span>
@@ -3253,12 +3337,12 @@
       <pre class="lines">
 
 
-296
-297
-298</pre>
+305
+306
+307</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 296</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 305</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
   <span class='id identifier rubyid_to_a'>to_a</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
@@ -3307,12 +3391,12 @@
       <pre class="lines">
 
 
-226
-227
-228</pre>
+235
+236
+237</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 226</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 235</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_y_heading'>y_heading</span>
   <span class='const'><span class='object_link'><a href="Utils2D.html" title="Math2D::Utils2D (module)">Utils2D</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Utils2D.html#HALF_PI-constant" title="Math2D::Utils2D::HALF_PI (constant)">HALF_PI</a></span></span> <span class='op'>-</span> <span class='id identifier rubyid_heading'>heading</span>
@@ -3327,7 +3411,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Apr 26 16:29:51 2021 by
+  Generated on Mon Apr 26 17:00:18 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.26 (ruby-3.0.1).
 </div>
