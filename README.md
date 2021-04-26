@@ -1,6 +1,6 @@
 # Math2D
 ![noise](./examples/noise.gif)
-<p style="text-align: center;"><sub><sup>An example of noise generation in Ruby2D using the Math2D's Perlin Noise implementation</sup></sub></p>
+<p style="text-align: center;"><sub><sup>An example of noise generation in Ruby2D using Math2D's Perlin Noise implementation</sup></sub></p>
 
 
 A collection of useful Mathematical and Vector tools in 2D space
