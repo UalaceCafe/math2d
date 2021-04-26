@@ -1514,13 +1514,13 @@
       <pre class="lines">
 
 
-278
-279
-280
-281</pre>
+281
+282
+283
+284</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 278</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 281</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_random'>random</span>
   <span class='id identifier rubyid_theta'>theta</span> <span class='op'>=</span> <span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='op'>-</span><span class='const'><span class='object_link'><a href="Utils2D.html" title="Math2D::Utils2D (module)">Utils2D</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Utils2D.html#TWO_PI-constant" title="Math2D::Utils2D::TWO_PI (constant)">TWO_PI</a></span></span><span class='op'>..</span><span class='const'>Utils2D</span><span class='op'>::</span><span class='const'>TWO_PI</span><span class='rparen'>)</span>
@@ -1652,14 +1652,14 @@
       <pre class="lines">
 
 
-302
-303
-304
 305
-306</pre>
+306
+307
+308
+309</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 302</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 305</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_to_vector'>to_vector</span><span class='lparen'>(</span><span class='id identifier rubyid_arr'>arr</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>`arr` must be an Array</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_arr'>arr</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>!=</span> <span class='const'>Array</span>
@@ -2849,14 +2849,20 @@
 270
 271
 272
-273</pre>
+273
+274
+275
+276</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 270</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reflect'>reflect</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_other'>other</span> <span class='op'>=</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_normalize'>normalize</span>
-  <span class='kw'>self</span> <span class='op'>-</span> <span class='int'>2</span> <span class='op'>*</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_dot'>dot</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='id identifier rubyid_other'>other</span>
+  <span class='id identifier rubyid_dot_prod'>dot_prod</span> <span class='op'>=</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_dot'>dot</span><span class='lparen'>(</span><span class='kw'>self</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_x'>x</span> <span class='op'>=</span> <span class='ivar'>@x</span> <span class='op'>-</span> <span class='id identifier rubyid_dot_prod'>dot_prod</span> <span class='op'>*</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_x'>x</span> <span class='op'>*</span> <span class='int'>2</span>
+  <span class='id identifier rubyid_y'>y</span> <span class='op'>=</span> <span class='ivar'>@y</span> <span class='op'>-</span> <span class='id identifier rubyid_dot_prod'>dot_prod</span> <span class='op'>*</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_y'>y</span> <span class='op'>*</span> <span class='int'>2</span>
+  <span class='const'><span class='object_link'><a href="" title="Math2D::Vector2D (class)">Vector2D</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#initialize-instance_method" title="Math2D::Vector2D#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -3193,12 +3199,12 @@
       <pre class="lines">
 
 
-286
-287
-288</pre>
+289
+290
+291</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 286</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 289</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_a'>to_a</span>
   <span class='lbracket'>[</span><span class='ivar'>@x</span><span class='comma'>,</span> <span class='ivar'>@y</span><span class='rbracket'>]</span>
@@ -3247,12 +3253,12 @@
       <pre class="lines">
 
 
-293
-294
-295</pre>
+296
+297
+298</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 293</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/vector2d.rb', line 296</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
   <span class='id identifier rubyid_to_a'>to_a</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
@@ -3321,7 +3327,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Apr 26 10:14:02 2021 by
+  Generated on Mon Apr 26 16:29:51 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.26 (ruby-3.0.1).
 </div>
