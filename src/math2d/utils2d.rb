@@ -137,14 +137,14 @@ module Math2D
 
     # @private
     # @see https://en.wikipedia.org/wiki/Perlin_noise
-    def random_gradient(ix, iy)
+    def self.random_gradient(ix, iy)
       random = 2920.0 * Math.sin(ix * 21_942.0 + iy * 171_324.0 + 8912.0) * Math.cos(ix * 23_157.0 * iy * 217_832.0 + 9758.0)
       [Math.cos(random), Math.sin(random)]
     end
 
     # @private
     # @see https://en.wikipedia.org/wiki/Perlin_noise
-    def dot_grid_gradient(ix, iy, x, y)
+    def self.dot_grid_gradient(ix, iy, x, y)
       gradient = random_gradient(ix, iy)
       dx = x - ix.to_f
       dy = y - iy.to_f
