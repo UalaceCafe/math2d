@@ -13,7 +13,7 @@ module Math2D
     # Twice the mathematical constant PI.
     TWO_PI     = Math::PI * 2
 
-    # Returns `angle` radians in degrees.
+    # Returns +angle+ radians in degrees.
     #
     # @param [Numeric] angle
     # @return [Float]
@@ -21,7 +21,7 @@ module Math2D
       (180 * angle) / Math::PI
     end
 
-    # Returns `angle` degrees in radians.
+    # Returns +angle+ degrees in radians.
     #
     # @param [Numeric] angle
     # @return [Float]
