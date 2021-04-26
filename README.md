@@ -8,7 +8,7 @@ Math2D is a library written in Ruby designed to help programmers with 2D project
 
 ## How to use
 
-Math2D is not a gem (yet), so simply copy the contents of the `src/` folder into your own project and add `require_relative 'math2d'` to your script. The `Math2D` namespace provides a `Vector2D` class, which, as the name suggests, deals with 2D vectors, and the `Utils2D` module, which include some useful non-vector specific mathematical methods and constants. Documentation is provided in the code before each module/class/method following YARD's syntax and also in the `doc/` folder.
+Math2D is not a gem (yet), so simply copy the contents of the `src/` folder into your own project and add `require_relative 'math2d'` to your script. The `Math2D` namespace provides a `Vector2D` class, which, as the name suggests, deals with 2D vectors, and the `Utils2D` module, which includes some useful non-vector specific mathematical methods and constants. Documentation is provided in the code above each module/class/method following YARD's syntax and also in the `doc/` folder.
 
 ## Credits
 
