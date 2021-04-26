@@ -269,7 +269,10 @@ module Math2D
     # @return [Vector2D]
     def reflect(other)
       other = other.normalize
-      self - 2 * other.dot(self) * other
+      dot_prod = other.dot(self)
+      x = @x - dot_prod * other.x * 2
+      y = @y - dot_prod * other.y * 2
+      Vector2D.new(x, y)
     end
 
     # Returns a new Vector2D with random components but magnitude equal to 1.
