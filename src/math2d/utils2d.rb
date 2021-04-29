@@ -53,7 +53,7 @@ module Math2D
       (b - a) * (3.0 - amt * 2.0) * amt * amt + a
     end
 
-    # Re-maps a number from one range (a1..a2) to another (b1..b2).
+    # Re-maps a number from one range (+a1+..+a2+) to another (+b1+..+b2+).
     #
     # @param [Numeric] value
     # @param [Numeric] a1
@@ -68,7 +68,7 @@ module Math2D
       b1 + slope * (value - a1)
     end
 
-    # Normalizes a number from another range (a..b) into a value between 0 and 1.
+    # Normalizes a number from another range (+a+..+b+) into a value between 0 and 1.
     #
     # @param [Numeric] value
     # @param [Numeric] a
@@ -78,7 +78,7 @@ module Math2D
       map(value, a, b, 0.0, 1.0)
     end
 
-    # Constrains a value between a minimum and maximum value.
+    # Constrains a value +x+ between a minimum value +a+ and maximum value +b+.
     #
     # @param [Numeric] x
     # @param [Numeric] a
@@ -86,6 +86,10 @@ module Math2D
     # @return [Numeric]
     def self.constrain(x, a, b)
       [[x, a].max, b].min
+    end
+
+    class << self
+      alias clamp constrain
     end
 
     # Returns the Perlin noise value at specified coordinates.

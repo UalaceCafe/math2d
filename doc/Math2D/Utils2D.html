@@ -206,6 +206,8 @@
     
 
     
+      (also: clamp)
+    
   </span>
   
   
@@ -217,7 +219,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Constrains a value between a minimum and maximum value.</p>
+<p>Constrains a value <code>x</code> between a minimum value <code>a</code> and maximum value <code>b</code>.</p>
 </div></span>
   
 </li>
@@ -313,7 +315,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Re-maps a number from one range (a1..a2) to another (b1..b2).</p>
+<p>Re-maps a number from one range (<code>a1</code>..<code>a2</code>) to another (<code>b1</code>..<code>b2</code>).</p>
 </div></span>
   
 </li>
@@ -361,7 +363,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Normalizes a number from another range (a..b) into a value between 0 and 1.</p>
+<p>Normalizes a number from another range (<code>a</code>..<code>b</code>) into a value between 0 and 1.</p>
 </div></span>
   
 </li>
@@ -431,12 +433,16 @@
   
 
   
+    <span class="aliases">Also known as:
+    <span class="names"><span id='clamp-class_method'>clamp</span></span>
+    </span>
+  
 
   
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Constrains a value between a minimum and maximum value.</p>
+<p>Constrains a value <code>x</code> between a minimum value <code>a</code> and maximum value <code>b</code>.</p>
 
 
   </div>
@@ -673,17 +679,17 @@
       <pre class="lines">
 
 
-127
-128
-129
-130
 131
 132
 133
-134</pre>
+134
+135
+136
+137
+138</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/utils2d.rb', line 127</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/utils2d.rb', line 131</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_grayscale'>grayscale</span><span class='lparen'>(</span><span class='id identifier rubyid_val'>val</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_c'>c</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_val'>val</span>
@@ -790,7 +796,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Re-maps a number from one range (a1..a2) to another (b1..b2).</p>
+<p>Re-maps a number from one range (<code>a1</code>..<code>a2</code>) to another (<code>b1</code>..<code>b2</code>).</p>
 
 
   </div>
@@ -984,10 +990,6 @@
       <pre class="lines">
 
 
-103
-104
-105
-106
 107
 108
 109
@@ -1001,10 +1003,14 @@
 117
 118
 119
-120</pre>
+120
+121
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/utils2d.rb', line 103</span>
+      <pre class="code"><span class="info file"># File 'src/math2d/utils2d.rb', line 107</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_noise'>noise</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span> <span class='op'>=</span> <span class='int'>0</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_x0'>x0</span> <span class='op'>=</span> <span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
@@ -1041,7 +1047,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Normalizes a number from another range (a..b) into a value between 0 and 1.</p>
+<p>Normalizes a number from another range (<code>a</code>..<code>b</code>) into a value between 0 and 1.</p>
 
 
   </div>
@@ -1263,7 +1269,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Apr 26 18:24:35 2021 by
+  Generated on Thu Apr 29 18:44:51 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.26 (ruby-3.0.1).
 </div>
