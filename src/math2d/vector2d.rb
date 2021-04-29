@@ -190,6 +190,26 @@ module Math2D
       vec
     end
 
+    # Constrains the magnitude of +self+ between a minimum value +a+ and maximum value +b+.
+    #
+    # @note I haven't experienced this with other methods (yet), so I'm only going to document this
+    #       here: you may end up with a broken magnitude (1.99999999 instead of 2, for example),
+    #       so always remember to check and round according to your need.
+    # @param [Numeric] a
+    # @param [Numeric] b
+    # @return [Vector2D]
+    def constrain(a, b)
+      mag = magnitude
+      v = Vector2D.one
+      if mag > b
+        v.set_magnitude(b)
+      elsif mag < a
+        v.set_magnitude(a)
+      end
+    end
+
+    alias clamp constrain
+
     # Sets the magnitude of +self+ to +new_mag+.
     #
     # @param [Numeric] new_mag
