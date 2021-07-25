@@ -1,5 +1,5 @@
 require 'ruby2d'
-require_relative '../src/math2d'
+require 'math2d'
 
 set(title: 'Utils2D#noise', width: 600, height: 400, background: 'white', diagnostics: true)
 
