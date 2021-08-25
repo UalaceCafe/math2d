@@ -273,13 +273,27 @@ module Math2D
       Math.acos((@x * other.x + @y * other.y) / (magnitude * other.magnitude))
     end
 
-    # Rotates +self+ +angle+ radians and returns it as a new Vector2D.
+    # Clockwise rotates +self+ +angle+ radians and returns it as a new Vector2D.
     #
     # @param [Numeric] angle
     # @return [Vector2D]
     def rotate(angle)
-      Vector2D.new(@x * Math.cos(angle) - @y * Math.sin(angle),
-                   @x * Math.sin(angle) + @y * Math.cos(angle))
+      Vector2D.new(
+        @x * Math.cos(angle) - @y * Math.sin(angle),
+        @x * Math.sin(angle) + @y * Math.cos(angle)
+      )
+    end
+
+    # Clockwise rotates +self+ +angle+ radians around a +pivot+ point and returns it as a new Vector2D.
+    #
+    # @param [Vector2D] pivot
+    # @param [Numeric] angle
+    # @return [Vector2D]
+    def rotate_around(pivot, angle)
+      x_rotated = pivot.x + ((@x - pivot.x) * Math.cos(angle)) - ((@y - pivot.y) * Math.sin(angle))
+      y_rotated = pivot.y + ((@x - pivot.x) * Math.sin(angle)) + ((@y - pivot.y) * Math.cos(angle))
+
+      Vector2D.new(x_rotated, y_rotated)
     end
 
     # Linear interpolate +self+ and +other+ with an amount +amt+.
