@@ -7,11 +7,11 @@ module Math2D
   # @see https://p5js.org/
   module Utils2D
     # Half the mathematical constant PI.
-    HALF_PI    = Math::PI / 2
+    HALF_PI      = Math::PI / 2
     # A quarter of the mathematical constant PI.
-    QUARTER_PI = Math::PI / 4
-    # Twice the mathematical constant PI.
-    TWO_PI     = Math::PI * 2
+    QUARTER_PI   = Math::PI / 4
+    # Twice the mathematical constant PI, also called TAU.
+    TWO_PI = TAU = Math::PI * 2
 
     # Returns +angle+ radians in degrees.
     #
