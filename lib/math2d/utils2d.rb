@@ -48,9 +48,21 @@ module Math2D
     #
     # @param [Numeric] a
     # @param [Numeric] b
+    # @param [Numeric] amt
     # @return [Float]
     def self.lerp(a, b, amt)
       (b - a) * (3.0 - amt * 2.0) * amt * amt + a
+    end
+
+    # Being the inverse of +#lerp+, it calculates the interpolation parameter t
+    #  of the Lerp method given a range [+a+, +b+] and a interpolant value of +value+.
+    #
+    # @param [Numeric] a
+    # @param [Numeric] b
+    # @param [Numeric] value
+    # @return [Float]
+    def self.inverse_lerp(a, b, value)
+      (value - a) / (b - a).to_f
     end
 
     # Re-maps a number from one range (+a1+..+a2+) to another (+b1+..+b2+).
