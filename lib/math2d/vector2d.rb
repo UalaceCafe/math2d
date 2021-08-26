@@ -305,6 +305,15 @@ module Math2D
       self + (other - self) * amt
     end
 
+    # Calculates the parameter t of the +#lerp+ method between +self+ and +other+ given an interpolant +value+.
+    #
+    # @param [Numeric, Vector2D] other
+    # @param [Vector2D] value
+    # @return [Vector2D]
+    def inverse_lerp(other, value)
+      (value - self) / (other - self)
+    end
+
     # Reflects +self+ and returns it as a new Vector2D.
     # +other+ is the normal of the plane where +self+ is reflected.
     #
