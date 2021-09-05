@@ -161,6 +161,8 @@ module Math2D
       Math.sqrt(@x**2 + @y**2)
     end
 
+    alias length magnitude
+
     # Returns the Euclidean distance between +self+ and +other+.
     #
     # @param [Vector2D] other
