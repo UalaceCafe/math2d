@@ -78,7 +78,7 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>src/math2d/utils2d.rb</dd>
+    <dd>lib/math2d/utils2d.rb</dd>
   </dl>
   
 </div>
@@ -170,7 +170,7 @@
           <div class="docstring">
   <div class="discussion">
     
-<p>Twice the mathematical constant PI.</p>
+<p>Twice the mathematical constant PI, also called TAU.</p>
 
 
   </div>
@@ -180,7 +180,7 @@
 
 </div>
         </dt>
-        <dd><pre class="code"><span class='const'>Math</span><span class='op'>::</span><span class='const'>PI</span> <span class='op'>*</span> <span class='int'>2</span></pre></dd>
+        <dd><pre class="code"><span class='const'>TAU</span> <span class='op'>=</span> <span class='const'>Math</span><span class='op'>::</span><span class='const'>PI</span> <span class='op'>*</span> <span class='int'>2</span></pre></dd>
       
     </dl>
   
@@ -268,6 +268,30 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>If no argument is passed, randomly generates a greyscale RGB array.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#inverse_lerp-class_method" title="inverse_lerp (class method)">.<strong>inverse_lerp</strong>(a, b, value)  &#x21d2; Float </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Being the inverse of <code>#lerp</code>, it calculates the interpolation parameter t  of the Lerp method given a range [<code>a</code>, <code>b</code>] and a interpolant value of <code>value</code>.</p>
 </div></span>
   
 </li>
@@ -506,12 +530,12 @@
       <pre class="lines">
 
 
-87
-88
-89</pre>
+99
+100
+101</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/utils2d.rb', line 87</span>
+      <pre class="code"><span class="info file"># File 'lib/math2d/utils2d.rb', line 99</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_constrain'>constrain</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_a'>a</span><span class='comma'>,</span> <span class='id identifier rubyid_b'>b</span><span class='rparen'>)</span>
   <span class='lbracket'>[</span><span class='lbracket'>[</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_a'>a</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_max'>max</span><span class='comma'>,</span> <span class='id identifier rubyid_b'>b</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_min'>min</span>
@@ -613,7 +637,7 @@
 41</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/utils2d.rb', line 39</span>
+      <pre class="code"><span class="info file"># File 'lib/math2d/utils2d.rb', line 39</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_distance'>distance</span><span class='lparen'>(</span><span class='id identifier rubyid_x1'>x1</span><span class='comma'>,</span> <span class='id identifier rubyid_y1'>y1</span><span class='comma'>,</span> <span class='id identifier rubyid_x2'>x2</span><span class='comma'>,</span> <span class='id identifier rubyid_y2'>y2</span><span class='rparen'>)</span>
   <span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_sqrt'>sqrt</span><span class='lparen'>(</span><span class='lparen'>(</span><span class='id identifier rubyid_x2'>x2</span> <span class='op'>-</span> <span class='id identifier rubyid_x1'>x1</span><span class='rparen'>)</span><span class='op'>**</span><span class='int'>2</span> <span class='op'>+</span> <span class='lparen'>(</span><span class='id identifier rubyid_y2'>y2</span> <span class='op'>-</span> <span class='id identifier rubyid_y1'>y1</span><span class='rparen'>)</span><span class='op'>**</span><span class='int'>2</span><span class='rparen'>)</span>
@@ -679,17 +703,17 @@
       <pre class="lines">
 
 
-131
-132
-133
-134
-135
-136
-137
-138</pre>
+143
+144
+145
+146
+147
+148
+149
+150</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/utils2d.rb', line 131</span>
+      <pre class="code"><span class="info file"># File 'lib/math2d/utils2d.rb', line 143</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_grayscale'>grayscale</span><span class='lparen'>(</span><span class='id identifier rubyid_val'>val</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_c'>c</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='id identifier rubyid_val'>val</span>
@@ -698,6 +722,100 @@
         <span class='id identifier rubyid_rand'>rand</span>
       <span class='kw'>end</span>
   <span class='lbracket'>[</span><span class='id identifier rubyid_c'>c</span><span class='comma'>,</span> <span class='id identifier rubyid_c'>c</span><span class='comma'>,</span> <span class='id identifier rubyid_c'>c</span><span class='comma'>,</span> <span class='float'>1.0</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="inverse_lerp-class_method">
+  
+    .<strong>inverse_lerp</strong>(a, b, value)  &#x21d2; <tt>Float</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Being the inverse of <code>#lerp</code>, it calculates the interpolation parameter t</p>
+
+<pre class="code ruby"><code class="ruby">of the Lerp method given a range [+a+, +b+] and a interpolant value of +value+.
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>a</span>
+      
+      
+        <span class='type'>(<tt>Numeric</tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>b</span>
+      
+      
+        <span class='type'>(<tt>Numeric</tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt>Numeric</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+64
+65
+66</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/math2d/utils2d.rb', line 64</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_inverse_lerp'>inverse_lerp</span><span class='lparen'>(</span><span class='id identifier rubyid_a'>a</span><span class='comma'>,</span> <span class='id identifier rubyid_b'>b</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span> <span class='op'>-</span> <span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span> <span class='op'>/</span> <span class='lparen'>(</span><span class='id identifier rubyid_b'>b</span> <span class='op'>-</span> <span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -747,6 +865,17 @@
       
     </li>
   
+    <li>
+      
+        <span class='name'>amt</span>
+      
+      
+        <span class='type'>(<tt>Numeric</tt>)</span>
+      
+      
+      
+    </li>
+  
 </ul>
 
 <p class="tag_title">Returns:</p>
@@ -769,12 +898,12 @@
       <pre class="lines">
 
 
-52
 53
-54</pre>
+54
+55</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/utils2d.rb', line 52</span>
+      <pre class="code"><span class="info file"># File 'lib/math2d/utils2d.rb', line 53</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_lerp'>lerp</span><span class='lparen'>(</span><span class='id identifier rubyid_a'>a</span><span class='comma'>,</span> <span class='id identifier rubyid_b'>b</span><span class='comma'>,</span> <span class='id identifier rubyid_amt'>amt</span><span class='rparen'>)</span>
   <span class='lparen'>(</span><span class='id identifier rubyid_b'>b</span> <span class='op'>-</span> <span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='lparen'>(</span><span class='float'>3.0</span> <span class='op'>-</span> <span class='id identifier rubyid_amt'>amt</span> <span class='op'>*</span> <span class='float'>2.0</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='id identifier rubyid_amt'>amt</span> <span class='op'>*</span> <span class='id identifier rubyid_amt'>amt</span> <span class='op'>+</span> <span class='id identifier rubyid_a'>a</span>
@@ -895,15 +1024,15 @@
       <pre class="lines">
 
 
-64
-65
-66
-67
-68
-69</pre>
+76
+77
+78
+79
+80
+81</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/utils2d.rb', line 64</span>
+      <pre class="code"><span class="info file"># File 'lib/math2d/utils2d.rb', line 76</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_a1'>a1</span><span class='comma'>,</span> <span class='id identifier rubyid_a2'>a2</span><span class='comma'>,</span> <span class='id identifier rubyid_b1'>b1</span><span class='comma'>,</span> <span class='id identifier rubyid_b2'>b2</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Division by 0 - a1 cannot be equal to a2</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_a2'>a2</span> <span class='op'>==</span> <span class='id identifier rubyid_a1'>a1</span>
@@ -990,27 +1119,27 @@
       <pre class="lines">
 
 
-107
-108
-109
-110
-111
-112
-113
-114
-115
-116
-117
-118
 119
 120
 121
 122
 123
-124</pre>
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/utils2d.rb', line 107</span>
+      <pre class="code"><span class="info file"># File 'lib/math2d/utils2d.rb', line 119</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_noise'>noise</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span> <span class='op'>=</span> <span class='int'>0</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_x0'>x0</span> <span class='op'>=</span> <span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
@@ -1111,12 +1240,12 @@
       <pre class="lines">
 
 
-77
-78
-79</pre>
+89
+90
+91</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/utils2d.rb', line 77</span>
+      <pre class="code"><span class="info file"># File 'lib/math2d/utils2d.rb', line 89</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_normalize'>normalize</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_a'>a</span><span class='comma'>,</span> <span class='id identifier rubyid_b'>b</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_a'>a</span><span class='comma'>,</span> <span class='id identifier rubyid_b'>b</span><span class='comma'>,</span> <span class='float'>0.0</span><span class='comma'>,</span> <span class='float'>1.0</span><span class='rparen'>)</span>
@@ -1185,7 +1314,7 @@
 22</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/utils2d.rb', line 20</span>
+      <pre class="code"><span class="info file"># File 'lib/math2d/utils2d.rb', line 20</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_to_deg'>to_deg</span><span class='lparen'>(</span><span class='id identifier rubyid_angle'>angle</span><span class='rparen'>)</span>
   <span class='lparen'>(</span><span class='int'>180</span> <span class='op'>*</span> <span class='id identifier rubyid_angle'>angle</span><span class='rparen'>)</span> <span class='op'>/</span> <span class='const'>Math</span><span class='op'>::</span><span class='const'>PI</span>
@@ -1254,7 +1383,7 @@
 30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/math2d/utils2d.rb', line 28</span>
+      <pre class="code"><span class="info file"># File 'lib/math2d/utils2d.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_to_rad'>to_rad</span><span class='lparen'>(</span><span class='id identifier rubyid_angle'>angle</span><span class='rparen'>)</span>
   <span class='lparen'>(</span><span class='const'>Math</span><span class='op'>::</span><span class='const'>PI</span> <span class='op'>*</span> <span class='id identifier rubyid_angle'>angle</span><span class='rparen'>)</span> <span class='op'>/</span> <span class='int'>180</span>
@@ -1269,9 +1398,9 @@
 </div>
 
       <div id="footer">
-  Generated on Sun Jul 25 15:32:29 2021 by
+  Generated on Wed Sep  8 11:55:19 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.26 (ruby-3.0.1).
+  0.9.26 (ruby-3.0.2).
 </div>
 
     </div>
