@@ -136,16 +136,20 @@ module Math2D
       (@x * other.x) + (@y * other.y)
     end
 
-    # Calculates the cross product between +self+ and +other+, where:
-    # AxB (A cross B) = (Ax * By) - (Bx * Ay)
-    # HOWEVER, the cross product is NOT defined in a 2D space, so the operation
-    # simply returns the magnitude of the resulting cross-product 3D vector.
+    # Calculates the "cross product" (see note) between +self+ and +other+, where:
+    # A^B (A wedge B) = (Ax * By) - (Bx * Ay)
+    #
+    # @note Strictly speaking, the cross product is not defined in a 2-dimensional space,
+    # instead what is being calculated here is called a `wedge product`, which is defined
+    # in any space of dimension greater than 1.
     #
     # @param [Vector2D] other
     # @return [Numeric]
     def cross(other)
       (@x * other.y) - (other.x * @y)
     end
+
+    alias wedge cross
 
     # Returns the magnitude squared of +self+.
     #
