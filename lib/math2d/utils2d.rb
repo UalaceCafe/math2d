@@ -13,12 +13,19 @@ module Math2D
     # Twice the mathematical constant PI, also called TAU.
     TWO_PI = TAU = Math::PI * 2
 
+    # Multiplication constant to convert a value in degrees to radians
+    # @note Can be used as a substitute to +Utils2D.to_deg+.
+    DEG2RAD      = Math::PI / 180
+    # Multiplication constant to convert a value in degrees to radians
+    # @note Can be used as a substitute to +Utils2D.to_rad+.
+    RAD2DEG      = 180 / Math::PI
+
     # Returns +angle+ radians in degrees.
     #
     # @param [Numeric] angle
     # @return [Float]
     def self.to_deg(angle)
-      (180 * angle) / Math::PI
+      angle * DEG2RAD
     end
 
     # Returns +angle+ degrees in radians.
@@ -26,7 +33,7 @@ module Math2D
     # @param [Numeric] angle
     # @return [Float]
     def self.to_rad(angle)
-      (Math::PI * angle) / 180
+      angle * RAD2DEG
     end
 
     # Returns the distance between two cartesian points.
