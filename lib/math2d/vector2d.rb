@@ -337,6 +337,24 @@ module Math2D
       Vector2D.new(x, y)
     end
 
+    # Refracts +self+ and returns it as a new Vector2D.
+    # +other+ is the normal of the plane where +self+ is refracted.
+    #
+    # @see https://www.khronos.org/registry/OpenGL/specs/gl/GLSLangSpec.1.20.pdf GLS Language Specification (page 66)
+    #
+    # @param [Vector2D] other
+    # @param [Numeric] refractive_index
+    # @return [Vector2D]
+    def refract(other, refractive_index)
+      dot_prod = other.dot(self)
+      k = 1.0 - refractive_index * refractive_index * (1.0 - dot_prod * dot_prod)
+      return Vector2D.zero if k.negative?
+
+      x = refractive_index * @x - (refractive_index * dot_prod * Math.sqrt(k)) * other.x
+      y = refractive_index * @y - (refractive_index * dot_prod * Math.sqrt(k)) * other.y
+      Vector2D.new(x, y)
+    end
+
     # Returns a new Vector2D with random components but magnitude equal to 1.
     #
     # @return [Vector2D]
