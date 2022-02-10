@@ -127,6 +127,10 @@ module Math2D
       Vector2D.new(@x / other, @y / other)
     end
 
+    # Compares +self+ and +other+ according to their components.
+    #
+    # @param [Vector2D] other
+    # @return [Boolean]
     def ==(other)
       (@x == other.x) && (@y == other.y)
     end
