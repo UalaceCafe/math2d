@@ -14,10 +14,10 @@ module Math2D
     TWO_PI = TAU = Math::PI * 2
 
     # Multiplication constant to convert a value in degrees to radians
-    # @note Can be used as a substitute to +Utils2D.to_deg+.
+    # @note Can be used as a substitute to +Utils2D.to_rad+.
     DEG2RAD      = Math::PI / 180
     # Multiplication constant to convert a value in degrees to radians
-    # @note Can be used as a substitute to +Utils2D.to_rad+.
+    # @note Can be used as a substitute to +Utils2D.to_deg+.
     RAD2DEG      = 180 / Math::PI
 
     # Returns +angle+ radians in degrees.
