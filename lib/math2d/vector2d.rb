@@ -127,6 +127,10 @@ module Math2D
       Vector2D.new(@x / other, @y / other)
     end
 
+    def ==(other)
+      (@x == other.x) && (@y == other.y)
+    end
+
     # Calculates the dot product between +self+ and +other+, where:
     # A.B (A dot B) = (Ax * Bx) + (Ay * By)
     #
