@@ -283,6 +283,14 @@ module Math2D
       Math.acos((@x * other.x + @y * other.y) / (magnitude * other.magnitude))
     end
 
+    # Checks if +self+ is facing the opposite direction of +other+.
+    #
+    # @param [Vector2D] other
+    # @return [Boolean]
+    def opposite?(other)
+      dot(other) < 0
+    end
+
     # Clockwise rotates +self+ +angle+ radians and returns it as a new Vector2D.
     #
     # @param [Numeric] angle
