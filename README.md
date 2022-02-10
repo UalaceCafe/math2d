@@ -18,7 +18,7 @@ The `Math2D` namespace provides a `Vector2D` class, which, as the name suggests,
 
 Documentation can be found:
 
-- At [Rubydoc](https://www.rubydoc.info/gems/math2d/1.1.0);
+- At [Rubydoc](https://www.rubydoc.info/gems/math2d);
 - In comments above each module, class and method following YARD's syntax;
 - In the `doc/` folder.
 
