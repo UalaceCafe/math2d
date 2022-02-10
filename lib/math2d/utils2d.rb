@@ -25,7 +25,7 @@ module Math2D
     # @param [Numeric] angle
     # @return [Float]
     def self.to_deg(angle)
-      angle * DEG2RAD
+      angle * RAD2DEG
     end
 
     # Returns +angle+ degrees in radians.
@@ -33,7 +33,7 @@ module Math2D
     # @param [Numeric] angle
     # @return [Float]
     def self.to_rad(angle)
-      angle * RAD2DEG
+      angle * DEG2RAD
     end
 
     # Returns the distance between two cartesian points.
