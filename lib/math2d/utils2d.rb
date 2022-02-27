@@ -142,8 +142,8 @@ module Math2D
       lerp(ix0, ix1, sy)
     end
 
-    # If no argument is passed, randomly generates a greyscale RGB array.
-    # Otherwise, returns a greyscale array with that argument normalized.
+    # If no argument is passed, randomly generates a grayscale RGB array.
+    # Otherwise, returns a grayscale array with that argument normalized.
     #
     # @param [Numeric] val
     # @return [Array<Float>]
@@ -155,6 +155,8 @@ module Math2D
           end
       [c, c, c, 1.0]
     end
+
+    alias greyscale grayscale
 
     private
 
