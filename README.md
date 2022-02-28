@@ -20,7 +20,11 @@ Documentation can be found:
 
 - At [Rubydoc](https://www.rubydoc.info/gems/math2d);
 - In comments above each module, class and method following YARD's syntax;
-- In the `doc/` folder.
+- In the [doc](doc/) folder.
+
+## Examples
+
+Examples can be found in the [examples](examples/) folder. Currently, all examples use [Ruby2D](https://github.com/ruby2d/ruby2d).
 
 ## Credits
 
