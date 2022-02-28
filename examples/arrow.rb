@@ -6,15 +6,11 @@ require 'math2d'
 
 set(title: 'Arrow', width: 200, height: 200, background: Utils2D.grayscale(200))
 
-WIDTH = Window.width
-HEIGHT = Window.height
-
-def draw_arrow(base, vector)
+def draw_arrow(base, vector, arrow_size)
   Line.new(x1: base.x, y1: base.y, x2: base.x + vector.x, y2: base.y + vector.y, width: 5, color: 'red')
 
   heading = vector.heading
   mag = vector.magnitude
-  arrow_size = 25
   translation = mag - arrow_size
 
   p1 = Vector2D.new(translation, arrow_size / 2.0).rotate(heading)
@@ -29,7 +25,7 @@ update do
   clear
 
   v2 = Vector2D.new(Window.mouse_x, Window.mouse_y)
-  draw_arrow(v1, v2)
+  draw_arrow(v1, v2, 15)
 
   Text.new("Magnitude: #{v2.length.round(2)}", x: 10, y: 150, color: 'black')
   Text.new("Heading: #{(v2.heading * Utils2D::RAD2DEG).round(2)}°", x: 10, y: 172, color: 'black')
