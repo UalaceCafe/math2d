@@ -33,6 +33,8 @@ update do
   pos2 = Vector2D.new(Window.mouse_x, Window.mouse_y)
   Circle.new(x: pos2.x, y: pos2.y, radius: 20, color: 'yellow')
 
+  Line.new(x1: pos1.x, y1: pos1.y, x2: pos2.x, y2: pos2.y, z: -1)
+
   pos3 = pos2.lerp(pos1, amt)
   Circle.new(x: pos3.x, y: pos3.y, radius: 20, color: 'green')
 end
