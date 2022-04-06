@@ -156,7 +156,9 @@ module Math2D
       [c, c, c, 1.0]
     end
 
-    alias greyscale grayscale
+    class << self
+      alias greyscale grayscale
+    end
 
     private
 
