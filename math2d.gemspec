@@ -7,4 +7,10 @@ Gem::Specification.new do |s|
   s.files       = Dir['lib/**/*.rb']
   s.homepage    = 'https://github.com/UalaceCafe/math2d'
   s.license     = 'MIT'
+
+  # no deployment dependencies
+
+  # development
+  s.add_development_dependency 'rspec', '~> 3.0'
+  s.add_development_dependency 'rake', '~> 13.0'
 end
