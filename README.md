@@ -26,6 +26,12 @@ Documentation can be found:
 
 Examples can be found in the [examples](examples/) folder. Currently, all examples use [Ruby2D](https://github.com/ruby2d/ruby2d).
 
+## Development
+
+After checking out the repo, 
+* run `bundle install` to install dependencies;
+* then, run `rake spec` to run the tests. 
+
 ## Credits
 
 A special thanks to the creators of the [p5.js website](https://p5js.org/) and the [Unity's Scripting API website](https://docs.unity3d.com/ScriptReference/). Most ideas for the methods in this library came from these two places. Specially, most if not all methods descriptions come from p5.js.
