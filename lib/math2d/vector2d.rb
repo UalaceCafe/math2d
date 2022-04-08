@@ -18,8 +18,8 @@ module Math2D
     # @param [Numeric] y
     # @return [Vector2D]
     def initialize(x = 0, y = 0)
-      @x = x
-      @y = y
+      @x = x.to_f
+      @y = y.to_f
     end
 
     # Sets the +x+ and +y+ components of the vector.
@@ -30,8 +30,8 @@ module Math2D
     # @param [Numeric] y
     # @return [Vector2D] self
     def set(x = self.x, y = self.y)
-      @x = x
-      @y = y
+      @x = x.to_f
+      @y = y.to_f
       self
     end
 
@@ -86,6 +86,7 @@ module Math2D
     end
 
     alias negate -@
+    alias reverse -@
 
     # Adds +self+ to another vector or to a scalar.
     #
@@ -166,6 +167,8 @@ module Math2D
       (@x**2) + (@y**2)
     end
 
+    alias magnitude2 squared
+
     # Returns the magnitude of +self+.
     #
     # @return [Float]
@@ -174,6 +177,16 @@ module Math2D
     end
 
     alias length magnitude
+
+    # Returns the squared Euclidean distance between +self+ and +other+. When comparing
+    # distances, comparing the squared distance yields the same result without the
+    # overhead of a square-root operation.
+    #
+    # @param [Vector2D] other
+    # @return [Float]
+    def distance2(other)
+      (other.x - @x)**2 + (other.y - @y)**2
+    end
 
     # Returns the Euclidean distance between +self+ and +other+.
     #
@@ -196,15 +209,13 @@ module Math2D
     # @return [Vector2D]
     def limit(max)
       msq = squared
-      vec = self
-      if msq > (max**2)
-        vec /= Math.sqrt(msq)
-        vec *= max
-      end
-      vec
+      return self if msq <= (max**2)
+
+      self * (max / Math.sqrt(msq)) if msq > (max**2)
     end
 
-    # Constrains the magnitude of +self+ between a minimum value +a+ and maximum value +b+.
+    # Constrains the magnitude of +self+ between a minimum value +a+ and maximum value +b+, returns a new
+    # vector or itself.
     #
     # @note I haven't experienced this with other methods (yet), so I'm only going to document this
     #       here: you may end up with a broken magnitude (1.99999999 instead of 2, for example),
@@ -213,12 +224,13 @@ module Math2D
     # @param [Numeric] b
     # @return [Vector2D]
     def constrain(a, b)
-      mag = magnitude
-      v = Vector2D.one
-      if mag > b
-        v.set_magnitude(b)
-      elsif mag < a
-        v.set_magnitude(a)
+      mag2 = magnitude2
+      if mag2 > b.abs2
+        Vector2D.one.set_magnitude(b)
+      elsif mag2 < a.abs2
+        Vector2D.one.set_magnitude(a)
+      else
+        self
       end
     end
 
@@ -227,22 +239,27 @@ module Math2D
     # Sets the magnitude of +self+ to +new_mag+.
     #
     # @param [Numeric] new_mag
-    # @return [Vector2D]
+    # @return [Vector2D] modified self
     def set_magnitude(new_mag)
       mag = magnitude
-      mag = mag.zero? ? Float::INFINITY : mag
-      Vector2D.new((@x * new_mag) / mag, (@y * new_mag) / mag)
+      mag = Float::INFINITY if mag.zero?
+      self * (new_mag / mag)
+      # Vector2D.new((@x * new_mag) / mag, (@y * new_mag) / mag)
     end
+
+    alias magnitude! set_magnitude
 
     # Normalizes +self+ (set the magnitude to 1).
     # +unit+ is an alias for this method.
     #
-    # @return [Vector2D]
+    # @return [Vector2D] modified self
     def normalize
       set_magnitude(1)
     end
 
-    alias unit normalize
+    alias normalize! normalize
+    alias unit! normalize!
+    alias unit normalize!
 
     # Returns true if the magnitude of +self+ is equal to 1, false otherwise.
     # +unit?+ is an alias for this method.
@@ -292,7 +309,7 @@ module Math2D
     # @param [Vector2D] other
     # @return [Boolean]
     def opposite?(other)
-      dot(other) < 0
+      dot(other).negative?
     end
 
     # Clockwise rotates +self+ +angle+ radians and returns it as a new Vector2D.
