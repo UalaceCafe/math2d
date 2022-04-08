@@ -211,7 +211,7 @@ module Math2D
       msq = squared
       return self if msq <= (max**2)
 
-      self * (max / Math.sqrt(msq)) if msq > (max**2)
+      self * (max / Math.sqrt(msq))
     end
 
     # Constrains the magnitude of +self+ between a minimum value +a+ and maximum value +b+, returns a new
@@ -244,7 +244,6 @@ module Math2D
       mag = magnitude
       mag = Float::INFINITY if mag.zero?
       self * (new_mag / mag)
-      # Vector2D.new((@x * new_mag) / mag, (@y * new_mag) / mag)
     end
 
     alias magnitude! set_magnitude
