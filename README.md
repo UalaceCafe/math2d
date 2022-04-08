@@ -29,8 +29,9 @@ Examples can be found in the [examples](examples/) folder. Currently, all exampl
 ## Development
 
 After checking out the repo, 
-* run `bundle install` to install dependencies;
-* then, run `rake spec` to run the tests. 
+* run `bundle install` to install dependencies.
+* run `rake spec` to run the tests. 
+* run `rake yard` to update the generated docs.
 
 ## Credits
 
