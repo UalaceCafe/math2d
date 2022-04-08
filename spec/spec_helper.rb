@@ -15,3 +15,9 @@ RSpec.configure do |config|
 end
 
 Dir['./spec/support/**/*.rb'].sort.each { |f| require f }
+
+#
+# Use this precision to check results when
+# float math yields inexact integer values
+#
+MAXPRECISION = 10
