@@ -5,8 +5,10 @@ module Math2D
   # - An implementation of various 2-dimensional vector methods.
   #
   # @author Ualace Henrique <ualacehenrique@hotmail.com>
-  # @note MOST methods return a NEW Vector2D instead of changing
-  #       self and returning it, so be careful.
+  # @note ALL ! (bang) methods that return a vector (e.g. #normalize!, #add!) change the vector in place
+  #       and return _self_.
+  # @note MOST (but not all) regular methods that return a vector create NEW _Vector2D_. Some however change the
+  #       vector in place and return _self_, so be careful.
   # @attr [Numeric] x The x coordinate of the Vector
   # @attr [Numeric] y The y coordinate of the Vector
   class Vector2D
@@ -20,6 +22,15 @@ module Math2D
     def initialize(x = 0, y = 0)
       @x = x.to_f
       @y = y.to_f
+    end
+
+    # Creates a copy of the +other+ vector.
+    #
+    # @param [Vector2D] other Vector to copy
+    # @return [Vector2D]
+    def initialize_copy(other)
+      @x = other.x
+      @y = other.y
     end
 
     # Sets the +x+ and +y+ components of the vector.
@@ -80,7 +91,7 @@ module Math2D
 
     # Negates both x and y values of +self+ and returns a new Vector2D.
     #
-    # @return [Vector2D]
+    # @return [Vector2D] new vector
     def -@
       Vector2D.new(-@x, -@y)
     end
@@ -88,44 +99,48 @@ module Math2D
     alias negate -@
     alias reverse -@
 
-    # Adds +self+ to another vector or to a scalar.
     #
-    # @param [Numeric, Vector2D] other
-    # @return [Vector2D]
+    # Negate this vector, modifying it in place
+    #
+    # @return [Vector2D] modified self
+    def reverse!
+      @x = -@x
+      @y = -@y
+      self
+    end
+
+    alias negate! reverse!
+
+    # Adds +self+ to another vector, scalar, or array of two scalars
+    #
+    # @param [Numeric, Vector2D, Array] other
+    # @return [Vector2D] new vector
     def +(other)
-      return Vector2D.new(@x + other.x, @y + other.y) if other.instance_of?(Vector2D)
-
-      Vector2D.new(@x + other, @y + other)
+      clone.plus!(other)
     end
 
-    # Subtracts +self+ to another vector or to a scalar.
+    # Subtracts +self+ from another vector, scalar, or array of two scalars
     #
-    # @param [Numeric, Vector2D] other
-    # @return [Vector2D]
+    # @param [Numeric, Vector2D, Array] other
+    # @return [Vector2D] new vector
     def -(other)
-      return Vector2D.new(@x - other.x, @y - other.y) if other.instance_of?(Vector2D)
-
-      Vector2D.new(@x - other, @y - other)
+      clone.minus!(other)
     end
 
-    # Multiplies +self+ by another vector or by a scalar.
+    # Multiplies +self+ by another vector, scalar, or array of two scalars
     #
-    # @param [Numeric, Vector2D] other
-    # @return [Vector2D]
+    # @param [Numeric, Vector2D, Array] other
+    # @return [Vector2D] new vector
     def *(other)
-      return Vector2D.new(@x * other.x, @y * other.y) if other.instance_of?(Vector2D)
-
-      Vector2D.new(@x * other, @y * other)
+      clone.times!(other)
     end
 
-    # Divides +self+ by another vector or by a scalar.
+    # Divides +self+ by another vector, scalar, or array of two scalars
     #
-    # @param [Numeric, Vector2D] other
-    # @return [Vector2D]
+    # @param [Numeric, Vector2D, Array] other
+    # @return [Vector2D] new vector
     def /(other)
-      return Vector2D.new(@x / other.x, @y / other.y) if other.instance_of?(Vector2D)
-
-      Vector2D.new(@x / other, @y / other)
+      clone.divide_by!(other)
     end
 
     # Compares +self+ and +other+ according to their components.
@@ -206,7 +221,7 @@ module Math2D
     # Limit the magnitude of +self+ to +max+ and returns a new vector.
     #
     # @param [Numeric] max
-    # @return [Vector2D]
+    # @return [Vector2D] new vector
     def limit(max)
       msq = squared
       return self if msq <= (max**2)
@@ -214,21 +229,22 @@ module Math2D
       self * (max / Math.sqrt(msq))
     end
 
-    # Constrains the magnitude of +self+ between a minimum value +a+ and maximum value +b+, returns a new
+    # Constrains the magnitude of +self+ between a minimum value +min+ and maximum value +max+, returns a new
     # vector or itself.
     #
     # @note I haven't experienced this with other methods (yet), so I'm only going to document this
     #       here: you may end up with a broken magnitude (1.99999999 instead of 2, for example),
     #       so always remember to check and round according to your need.
-    # @param [Numeric] a
-    # @param [Numeric] b
-    # @return [Vector2D]
-    def constrain(a, b)
+    # @param [Numeric] min
+    # @param [Numeric] max
+    # @return [Vector2D] new vector, or self
+    def constrain(min, max)
+      min, max = max, min if min > max # swap
       mag2 = magnitude2
-      if mag2 > b.abs2
-        Vector2D.one.set_magnitude(b)
-      elsif mag2 < a.abs2
-        Vector2D.one.set_magnitude(a)
+      if mag2 > max.abs2
+        Vector2D.one.set_magnitude(max)
+      elsif mag2 < min.abs2
+        Vector2D.one.set_magnitude(min)
       else
         self
       end
@@ -314,33 +330,56 @@ module Math2D
     # Clockwise rotates +self+ +angle+ radians and returns it as a new Vector2D.
     #
     # @param [Numeric] angle
-    # @return [Vector2D]
+    # @return [Vector2D] new vector
     def rotate(angle)
-      Vector2D.new(
-        @x * Math.cos(angle) - @y * Math.sin(angle),
-        @x * Math.sin(angle) + @y * Math.cos(angle)
-      )
+      clone.rotate!(angle)
+    end
+
+    # Clockwise rotates +self+ by +angle+ radians *in place*
+    #
+    # @param [Numeric] angle
+    # @return [Vector2D] modified self
+    def rotate!(angle)
+      sin_ang = Math.sin(angle)
+      cos_ang = Math.cos(angle)
+      @x = @x * cos_ang - @y * sin_ang
+      @y = @x * sin_ang + @y * cos_ang
     end
 
     # Clockwise rotates +self+ +angle+ radians around a +pivot+ point and returns it as a new Vector2D.
     #
     # @param [Vector2D] pivot
     # @param [Numeric] angle
-    # @return [Vector2D]
+    # @return [Vector2D] new vector
     def rotate_around(pivot, angle)
-      x_rotated = pivot.x + ((@x - pivot.x) * Math.cos(angle)) - ((@y - pivot.y) * Math.sin(angle))
-      y_rotated = pivot.y + ((@x - pivot.x) * Math.sin(angle)) + ((@y - pivot.y) * Math.cos(angle))
+      clone.rotate_around!(pivot, angle)
+    end
 
-      Vector2D.new(x_rotated, y_rotated)
+    # Clockwise rotates +self+ by +angle+ radians around a +pivot+ point *in place*
+    #
+    # @param [Vector2D] pivot
+    # @param [Numeric] angle
+    # @return [Vector2D] modified self
+    def rotate_around!(pivot, angle)
+      pivot_x = pivot.x
+      pivot_y = pivot.y
+      dx = (@x - pivot_x)
+      dy = (@y - pivot_y)
+      sin_ang = Math.sin(angle)
+      cos_ang = Math.cos(angle)
+      @x = pivot_x + (dx * cos_ang) - (dy * sin_ang)
+      @y = pivot_y + (dx * sin_ang) + (dy * cos_ang)
     end
 
     # Linear interpolate +self+ and +other+ with an amount +amt+.
     #
     # @param [Numeric, Vector2D] other
     # @param [Numeric] amt
-    # @return [Vector2D]
+    # @return [Vector2D] new vector
     def lerp(other, amt)
-      self + (other - self) * amt
+      Vector2D.new @x + (other.x - @x) * amt,
+                   @y + (other.y - @y) * amt
+      # self + (other - self) * amt
     end
 
     # Calculates the parameter t of the +#lerp+ method between +self+ and +other+ given an interpolant +value+.
@@ -360,26 +399,27 @@ module Math2D
     def reflect(other)
       other = other.normalize
       dot_prod = other.dot(self)
-      x = @x - dot_prod * other.x * 2
-      y = @y - dot_prod * other.y * 2
-      Vector2D.new(x, y)
+      Vector2D.new @x - dot_prod * other.x * 2,
+                   @y - dot_prod * other.y * 2
     end
 
     # Refracts +self+ and returns it as a new Vector2D.
     # +other+ is the normal of the plane where +self+ is refracted.
     #
     # @see https://www.khronos.org/registry/OpenGL/specs/gl/GLSLangSpec.1.20.pdf GLS Language Specification (page 66)
+    # @see https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/refract.xhtml
     #
     # @param [Vector2D] other
     # @param [Numeric] refractive_index
     # @return [Vector2D]
     def refract(other, refractive_index)
       dot_prod = other.dot(self)
-      k = 1.0 - refractive_index * refractive_index * (1.0 - dot_prod * dot_prod)
+      k = 1.0 - refractive_index.abs2 * (1.0 - dot_prod.abs2)
       return Vector2D.zero if k.negative?
 
-      x = refractive_index * @x - (refractive_index * dot_prod * Math.sqrt(k)) * other.x
-      y = refractive_index * @y - (refractive_index * dot_prod * Math.sqrt(k)) * other.y
+      other_refraction = (refractive_index * dot_prod * Math.sqrt(k))
+      x = refractive_index * @x - other_refraction * other.x
+      y = refractive_index * @y - other_refraction * other.y
       Vector2D.new(x, y)
     end
 
@@ -405,6 +445,26 @@ module Math2D
       to_a.to_s
     end
 
+    # Returns a *new vector* of the clockwise perpendicular to this vector.
+    #
+    # @return [Vector2D]
+    #
+    def vector_cross_product
+      Vector2D.new @y, -@x
+    end
+
+    alias perp vector_cross_product
+
+    # Replace this vector with it's clockwise perpendicular
+    #
+    # @return [Vector2D] modified self
+    def vector_cross_product!
+      @x, @y = @y, -@x
+      self
+    end
+
+    alias perp! vector_cross_product!
+
     # Returns a new Vector2D from an array +arr+.
     # If the array is bigger than 2 elements, only the first 2 will be considered.
     #
@@ -414,6 +474,104 @@ module Math2D
       raise ArgumentError, '`arr` must be an Array' if arr.class != Array
 
       Vector2D.new(arr[0], arr[1])
+    end
+
+    # Multiplies +self+ by +delta+ in place.
+    #
+    # @param [Numeric, Vector2D, Array] delta
+    # @return [Vector2D] modified self
+    def times!(delta)
+      case delta
+      when Vector2D
+        @x *= delta.x
+        @y *= delta.y
+      when Array
+        @x *= delta[0]
+        @y *= delta[1]
+      else
+        @x *= delta
+        @y *= delta
+      end
+      self
+    end
+
+    # Subtracts +delta+ from +self+ in place.
+    #
+    # @param [Numeric, Vector2D, Array] delta
+    # @return [Vector2D] modified self
+    def minus!(delta)
+      case delta
+      when Vector2D
+        @x -= delta.x
+        @y -= delta.y
+      when Array
+        @x -= delta[0]
+        @y -= delta[1]
+      else
+        @x -= delta
+        @y -= delta
+      end
+      self
+    end
+
+    # Adds +delta+ to +self+ in place.
+    #
+    # @param [Numeric, Vector2D, Array] delta
+    # @return [Vector2D] modified self
+    def plus!(delta)
+      case delta
+      when Vector2D
+        @x += delta.x
+        @y += delta.y
+      when Array
+        @x += delta[0]
+        @y += delta[1]
+      else
+        @x += delta
+        @y += delta
+      end
+      self
+    end
+
+    # Divides +self+ by +delta+ in place.
+    #
+    # @param [Numeric, Vector2D, Array] delta
+    # @return [Vector2D] modified self
+    def divide_by!(delta)
+      case delta
+      when Vector2D
+        @x /= delta.x
+        @y /= delta.y
+      when Array
+        @x /= delta[0]
+        @y /= delta[1]
+      else
+        @x /= delta
+        @y /= delta
+      end
+      self
+    end
+
+    # Add +dx+ and +dy+ to the current vector's components, respectively
+    #
+    # @param [Numeric] dx
+    # @param [Numeric] dy
+    # @return [Vector2d] modified self
+    def add!(dx, dy)
+      @x += dx
+      @y += dy
+      self
+    end
+
+    # Subtract +dx+ and +dy+ _from_ the current vector's components, respectively
+    #
+    # @param [Numeric] dx
+    # @param [Numeric] dy
+    # @return [Vector2d] modified self
+    def subtract!(dx, dy)
+      @x -= dx
+      @y -= dy
+      self
     end
   end
 end
