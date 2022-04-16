@@ -33,6 +33,16 @@ module Math2D
       @y = other.y
     end
 
+    # Replace contents of this vector with contents of +other+ *in place*.
+    #
+    # @param [Vector2D] other
+    # @return [Vector2D] modified vector
+    def replace!(other)
+      @x = other.x
+      @y = other.y
+      self
+    end
+
     # Sets the +x+ and +y+ components of the vector.
     # Each argument is optional, so you can change a single component
     # and keep the other one's current value.
