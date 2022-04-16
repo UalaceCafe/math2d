@@ -55,4 +55,14 @@ RSpec.describe Vector2D do
     include_examples 'test ratio for', 2, 2
     include_examples 'test ratio for', 3, 3
   end
+
+  shared_examples 'test perpendicular for' do |x, y|
+    include_examples 'test unary', :perp, x, y, Vector2D.new(y, -x)
+  end
+
+  describe '#perp' do
+    include_examples 'test perpendicular for', 1, 1
+    include_examples 'test perpendicular for', 2, 2
+    include_examples 'test perpendicular for', 3, 3
+  end
 end
