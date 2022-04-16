@@ -269,22 +269,30 @@ module Math2D
     def set_magnitude(new_mag)
       mag = magnitude
       mag = Float::INFINITY if mag.zero?
-      self * (new_mag / mag)
+      times!(new_mag / mag)
     end
 
     alias magnitude! set_magnitude
 
-    # Normalizes +self+ (set the magnitude to 1).
+    # Normalizes +self+ (set the magnitude to 1) and returns a new vector.
     # +unit+ is an alias for this method.
     #
-    # @return [Vector2D] modified self
+    # @return [Vector2D] new vector
     def normalize
+      clone.set_magnitude(1)
+    end
+
+    alias unit normalize
+
+    # Normalizes +self+ (set the magnitude to 1) *in place*.
+    # +unit!+ is an alias for this method.
+    #
+    # @return [Vector2D] modified self
+    def normalize!
       set_magnitude(1)
     end
 
-    alias normalize! normalize
     alias unit! normalize!
-    alias unit normalize!
 
     # Returns true if the magnitude of +self+ is equal to 1, false otherwise.
     # +unit?+ is an alias for this method.
@@ -354,6 +362,7 @@ module Math2D
       cos_ang = Math.cos(angle)
       @x = @x * cos_ang - @y * sin_ang
       @y = @x * sin_ang + @y * cos_ang
+      self
     end
 
     # Clockwise rotates +self+ +angle+ radians around a +pivot+ point and returns it as a new Vector2D.
@@ -379,6 +388,7 @@ module Math2D
       cos_ang = Math.cos(angle)
       @x = pivot_x + (dx * cos_ang) - (dy * sin_ang)
       @y = pivot_y + (dx * sin_ang) + (dy * cos_ang)
+      self
     end
 
     # Linear interpolate +self+ and +other+ with an amount +amt+.
