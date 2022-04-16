@@ -37,4 +37,6 @@ After checking out the repo,
 
 A special thanks to the creators of the [p5.js website](https://p5js.org/) and the [Unity's Scripting API website](https://docs.unity3d.com/ScriptReference/). Most ideas for the methods in this library came from these two places. Specially, most if not all methods descriptions come from p5.js.
 
-Also, thanks to the folks at the [Ruby2D discord channel](https://discord.com/invite/QBWguEasV7) for supporting me and this little gem of mine. Thank you, guys :)
+Thanks to [nogginly](https://github.com/nogginly) for contributing to and improving so much this project.
+
+And thanks to the folks at the [Ruby2D discord channel](https://discord.com/invite/QBWguEasV7) for supporting me and this little gem of mine. Thank you, guys :)
