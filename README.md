@@ -6,7 +6,7 @@
 
 > A collection of useful Mathematical and Vector tools in 2D space
 
-Math2D is a library written in Ruby designed to help programmers with 2D projects - specifically, I started developing this tool to use it in my projects with the [Ruby2D gem](https://github.com/ruby2d/ruby2d). It provides several mathematical and vector functions and tools in two-dimensional Euclidean space.
+Math2D is a library written in Ruby designed to help programmers with 2D projects - specifically, I started developing this tool to use it in my projects with the [Ruby2D gem](https://github.com/ruby2d/ruby2d). It provides several mathematical and vector functions and tools in two-dimensional Euclidean space. In addition to that, it also includes a few color and noise related methods.
 
 ## How to use
 

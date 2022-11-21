@@ -48,7 +48,7 @@ module Math2D
     end
 
     # Calculates a number between two numbers at a specific increment.
-    # The amt parameter is the amount to interpolate between the two
+    # The +amt+ parameter is the amount to interpolate between the two
     # values where 0.0 equal to the first point, 0.1 is very near the
     # first point, 0.5 is half-way in between, and 1.0 is equal to the
     # second point.
@@ -158,6 +158,136 @@ module Math2D
 
     class << self
       alias greyscale grayscale
+    end
+
+    # Interpolates two RGB (r,g,b,a) colors +a+ and +b+ by an amount +amt+.
+    #
+    # @param [Array<Numeric>] a
+    # @param [Array<Numeric>] b
+    # @param [Numeric] amt
+    # @return [Array<Float>]
+    def self.lerp_rgb(a, b, amt)
+      [
+        lerp(a[0], b[0], amt),
+        lerp(a[1], b[1], amt),
+        lerp(a[2], b[2], amt),
+        lerp(a[3], b[3], amt)
+      ]
+    end
+
+    # Interpolates two RGB (r,g,b,a) colors +a+ and +b+ in the HSV color space by an amount +amt+.
+    # This method is preferred over +lerp_rgb+ when working with intensity graphs (i.e. temperature, probability density
+    # etc.)
+    #
+    # @note Both colors are converted internally to HSV and then converted back to RGB 0-1 at the end.
+    #
+    # @param [Array<Numeric>] a
+    # @param [Array<Numeric>] b
+    # @param [Numeric] amt
+    # @return [Array<Float>]
+    def self.lerp_hue(a, b, amt)
+      a = rgb_to_hsv(a)
+      b = rgb_to_hsv(b)
+      d = (b[0] - a[0]).abs
+      if a[0] > b[0]
+        a, b = b, a
+        amt = 1 - amt
+      end
+      if d > 0.5
+        a[0] += 1
+        h = (a[0] + amt * (b[0] - a[0])) % 1
+      else
+        h = a[0] + amt * d
+      end
+      hsv_to_rgb(
+        [
+          h,
+          lerp(a[1], b[1], amt),
+          lerp(a[2], b[2], amt),
+          lerp(a[3], b[3], amt)
+        ]
+      )
+    end
+
+    # Converts an RGB color array (r,g,b,a) +color+ to the HSV (h,s,v,a) color space.
+    #
+    # @note This method assumes that both the RGB and HSV color arrays are in Linear RGB/HSV (also called RBG/HSV 0-1),
+    # where each component ranges from 0.0 to 1.0.
+    #
+    # @param [Array<Numeric>]
+    # @return [Array<Float>]
+    def self.rgb_to_hsv(color)
+      r = color[0]
+      g = color[1]
+      b = color[2]
+      a = color[3]
+      max = [r, g, b].max
+      min = [r, g, b].min
+      v = max
+      d = max - min
+      s = max.zero? ? 0 : d / max
+      if max == min
+        h = 0
+      else
+        case max
+        when r
+          h = (g - b) / d + (g < b ? 6 : 0)
+        when g
+          h = (b - r) / d + 2
+        when b
+          h = (r - g) / d + 4
+        end
+        h /= 6
+      end
+      [h, s, v, a]
+    end
+
+    # Converts an HSV color array (h,s,v,a) +color+ to the RGB (r,g,b,a) color space.
+    #
+    # @note This method assumes that both the RGB and HSV color arrays are in Linear RGB/HSV (also called RBG/HSV 0-1),
+    # where each component ranges from 0.0 to 1.0.
+    #
+    # @param [Array<Numeric>]
+    # @return [Array<Float>]
+    def self.hsv_to_rgb(color)
+      h = color[0]
+      s = color[1]
+      v = color[2]
+      a = color[3]
+      i = (h * 6).floor
+      f = h * 6 - i
+      pp = v * (1 - s)
+      q = v * (1 - f * s)
+      t = v * (1 - (1 - f) * s)
+
+      case i % 6
+      when 0
+        r = v
+        g = t
+        b = pp
+      when 1
+        r = q
+        g = v
+        b = pp
+      when 2
+        r = pp
+        g = v
+        b = t
+      when 3
+        r = pp
+        g = q
+        b = v
+      when 4
+        r = t
+        g = pp
+        b = v
+      when 5
+        r = v
+        g = pp
+        b = q
+      end
+
+      [r, g, b, a]
     end
 
     private
